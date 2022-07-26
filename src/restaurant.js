@@ -100,17 +100,20 @@ const orderMenu = function (pedido) {
 const createMenu = (menu) => ({
    fetchMenu: () => menu,
    consumption: [],
-   order: (pedido) => {
-    this.consumption.push(pedido);
-  },
+   order: orderMenu,
   });
+
   const menu = {
     food: { coxinha: 3.90, sanduiche: 9.90 },
     drinks: { agua: 3.90, cerveja: 6.90 },
   };
   const objetoRetornado = createMenu(menu);
   objetoRetornado.order('coxinha');
-
+  objetoRetornado.order("coxinha");
+  objetoRetornado.order("agua");
+  objetoRetornado.order("sopa");
+  objetoRetornado.order("sashimi");
 console.log(objetoRetornado.consumption);
+
 
 module.exports = createMenu;
