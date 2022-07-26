@@ -151,7 +151,7 @@ describe("10 - Implemente os casos de teste e a função `createMenu`", () => {
   // objetoRetornado.order('coxinha');
   // objetoRetornado.consumption // Retorno: ['coxinha', 'agua', 'coxinha']
   // ```
-  it("VVerifique se a função `order` aceita que pedidos repetidos sejam acrescidos a `consumption`.", () => {
+  it("Verifique se a função `order` aceita que pedidos repetidos sejam acrescidos a `consumption`.", () => {
     const objetoQualquer = {
       food: { 'coxinha': 2.5, 'sanduiche': 8.0 },
       drinks: { 'agua': 2.5, 'cerveja': 7.5 },
@@ -174,6 +174,19 @@ describe("10 - Implemente os casos de teste e a função `createMenu`", () => {
   // objetoRetornado.order('coxinha');
   // objetoRetornado.pay() // Retorno: somaDosPreçosDosPedidos
   // ```
+  it("Verifique se, ao chamar `objetoRetornado.pay()`, retorna-se a soma dos preços de tudo que foi pedido, conforme registrado em `objetoRetornado.consumption`", () => {
+    const objetoQualquer = {
+      food: { 'coxinha': 2.5, 'sanduiche': 8.0 },
+      drinks: { 'agua': 2.5, 'cerveja': 7.5 },
+    };
+    const objetoRetornado = createMenu(objetoQualquer);
+    objetoRetornado.order("coxinha");
+    objetoRetornado.order("coxinha");
+    objetoRetornado.order("agua");
+    objetoRetornado.order("cerveja");
+    expect(objetoRetornado.pay(objetoRetornado.consumption)).toBeCloseTo(16.5);
+  });
+
 
   // Agora faça o PASSO 4 no arquivo `src/restaurant.js`.
 });

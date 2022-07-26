@@ -101,6 +101,18 @@ const createMenu = (menu) => ({
    fetchMenu: () => menu,
    consumption: [],
    order: orderMenu,
+   pay: (consumption) => {
+    let valorAPagar = 0;
+    for (let index = 0; index < consumption.length; index += 1) {
+      if (menu.food[consumption[index]]) {
+        valorAPagar += menu.food[consumption[index]];
+      }
+      if (menu.drinks[consumption[index]]) {
+        valorAPagar += menu.drinks[consumption[index]];
+      }
+    }
+    return (valorAPagar + ((valorAPagar * 10) / 100));
+  },
   });
 
   const menu = {
@@ -109,11 +121,6 @@ const createMenu = (menu) => ({
   };
   const objetoRetornado = createMenu(menu);
   objetoRetornado.order('coxinha');
-  objetoRetornado.order("coxinha");
-  objetoRetornado.order("agua");
-  objetoRetornado.order("sopa");
-  objetoRetornado.order("sashimi");
-console.log(objetoRetornado.consumption);
-
+  console.log(objetoRetornado.pay(objetoRetornado.consumption));
 
 module.exports = createMenu;
